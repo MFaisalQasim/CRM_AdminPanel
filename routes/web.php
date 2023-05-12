@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Auth;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +22,27 @@ use App\Http\Controllers\QrCodeController;
 
 //     \QrCode::size(500)
 //             ->format('png')
-//             ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
+//             ->generate('FaisalDev', public_path('images/qrcode.png'));
 //   return view('qrCode');
 
 // });
 
 Route::get('/qrcode', [QrCodeController::class, 'index']);
 
+
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+});
+
+
