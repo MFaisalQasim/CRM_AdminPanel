@@ -159,7 +159,6 @@ return [
         /*
          * Package Service Providers...
          */
-
         /*
          * Application Service Providers...
          */
@@ -170,7 +169,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        
+        OwenIt\Auditing\AuditingServiceProvider::class        
     ])->toArray(),
 
     /*
@@ -187,7 +186,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-        // 'role' => Spatie\Permission\Models\Role::class,
     ])->toArray(),
 
 ];
