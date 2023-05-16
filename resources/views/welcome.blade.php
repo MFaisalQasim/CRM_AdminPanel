@@ -850,11 +850,7 @@
             </div>
         @endif
     </div>
-    {{-- style="margin-top:60px" --}}
-    <div>
-        <div class="mt-4" id='calendar'></div>
-    </div>
+    <h1>Well Come</h1>
 </body>
-
 
 </html>

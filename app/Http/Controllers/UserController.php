@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-// use DB;
-// use Hash;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use DB;
+use Hash;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
     
 class UserController extends Controller
@@ -21,6 +21,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        // $users = User::where('id', '!=', auth()->user()->id)->paginate(5);
+        // return view('users.index', compact('users'))
         $data = User::orderBy('id','DESC')->paginate(5);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);

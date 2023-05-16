@@ -50,6 +50,15 @@
         {{-- //Fills in just the subject and body of an e-mail. --}}
         {{ QrCode::email(null, 'This is the subject.', 'This is the message body.') }}
 
+        
+{{-- <div class="visible-print text-center">
+    <h1>\ - QR Code Generator Example</h1>
+     
+    {!! QrCode::size(250)->generate('FaisalDev'); !!}
+     
+    <p>example by FaisalDev.</p>
+</div> --}}
+
         {{-- Helpers For Generate Different QR Codes
 BitCoin
 This helper generates a scannable bitcoin to send payments.

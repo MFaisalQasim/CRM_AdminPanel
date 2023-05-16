@@ -171,6 +171,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         \Chatify\ChatifyServiceProvider::class,   
+        NotificationChannels\Discord\DiscordServiceProvider::class,
     ])->toArray(),
 
     /*
