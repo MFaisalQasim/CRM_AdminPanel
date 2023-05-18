@@ -12,6 +12,11 @@ use App\Http\Controllers\ItemController;
 use App\Http\Livewire\NotificationDemo;
 use App\Http\Livewire\NotificationSweetAlert;
 
+// Laravel Telescope
+
+// http://localhost:8000/telescope/requests
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +35,6 @@ use App\Http\Livewire\NotificationSweetAlert;
 //   return view('qrCode');
 // });
 
-Route::get('/qrcode', [QrCodeController::class, 'index']);
 
 Auth::routes();
 
@@ -41,6 +45,25 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
+    
+    // helper
+
+    Route::get('helper', function(){
+        $imageName = 'example.png';
+        $fullpath = productImagePath($imageName);
+      
+        dd($fullpath);
+    });
+      
+    Route::get('helper2', function(){
+        $newDateFormat = changeDateFormate(date('Y-m-d'),'m/d/Y');
+
+        dd($newDateFormat);
+    });
+
+    // qrcode
+    Route::get('/qrcode', [QrCodeController::class, 'index']);
+
     // RoleController
     Route::resource('roles', RoleController::class);
     // UserController
@@ -68,12 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Notifications
     // Toasts
     Route::get('notification', NotificationDemo::class);
-    // Alert
-    Route::get('notification-sweetalert', NotificationSweetAlert::class);
+    // Alert    
+    Route::get('notification-sweetalert', NotificationSweetAlert::class);    
     
-    // UsersController
-    // follow unfollow
-    // Route::get('users', [UsersController::class, 'index'])->name('users');
-    // Route::post('users/{user}/follow', [UsersController::class, 'follow'])->name('follow');
-    // Route::delete('users/{user}/unfollow', [UsersController::class, 'unfollow'])->name('unfollow');
 });

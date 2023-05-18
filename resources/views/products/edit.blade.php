@@ -26,7 +26,7 @@
     @endif
 
 
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
+    <form id="myFormId" action="{{ route('products.update',$product->id) }}" method="POST">
     	@csrf
         @method('PUT')
 
@@ -45,7 +45,7 @@
 		        </div>
 		    </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-		      <button type="submit" class="btn btn-primary">Submit</button>
+		      <button id="myButtonID" type="submit" class="btn btn-primary">Submit</button>
 		    </div>
 		</div>
 

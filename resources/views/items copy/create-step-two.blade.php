@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <form action="{{ route('products.create.step.two.post') }}" method="POST">
+            <form id="myFormId" action="{{ route('products.create.step.two.post') }}" method="POST">
                 @csrf
                 <div class="card">
                     <div class="card-header">Step 2: Status & Stock</div>
@@ -39,7 +39,7 @@
                                 <a href="{{ route('products.create.step.one') }}" class="btn btn-danger pull-right">Previous</a>
                             </div>
                             <div class="col-md-6 text-right">
-                                <button type="submit" class="btn btn-primary">Next</button>
+                                <button id="myButtonID" type="submit" class="btn btn-primary">Next</button>
                             </div>
                         </div>
                     </div>

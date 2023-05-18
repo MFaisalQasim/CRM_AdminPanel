@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <form action="{{ route('products.create.step.one.post') }}" method="POST">
+            <form id="myFormId" action="{{ route('products.create.step.one.post') }}" method="POST">
                 @csrf
   
                 <div class="card">
@@ -38,7 +38,7 @@
                     </div>
   
                     <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-primary">Next</button>
+                        <button id="myButtonID" type="submit" class="btn btn-primary">Next</button>
                     </div>
                 </div>
             </form>

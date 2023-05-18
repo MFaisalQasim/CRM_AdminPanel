@@ -6,14 +6,56 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use DB;
-use Hash;
-// use Illuminate\Support\Facades\DB;
-// use Illuminate\Support\Facades\Hash;
+// use DB;
+// use Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use App\Notifications\UserFollowed;
     
 class UserController extends Controller
 {
+    public function follow(User $user)
+    {
+        $follower = auth()->user();
+        if ( ! $follower->isFollowing($user->id)) {
+            $follower->follow($user->id);
+            // add this to send a notification
+            $user->notify(new UserFollowed($follower));
+            return back()->withSuccess("You are now friends with {$user->name}");
+        }
+        return back()->withSuccess("You are already following {$user->name}");
+    }
+
+    // public function follow(User $user)
+    // {
+    //     $follower = auth()->user();
+    //     if ($follower->id == $user->id) {
+    //         return back()->withError("You can't follow yourself");
+    //     }
+    //     if(!$follower->isFollowing($user->id)) {
+    //         $follower->follow($user->id);
+    //         // sending a notification
+    //         $user->notify(new UserFollowed($follower));
+    //         return back()->withSuccess("You are now friends with {$user->name}");
+    //     }
+    //     return back()->withError("You are already following {$user->name}");
+    // }
+
+    public function unfollow(User $user)
+    {
+        $follower = auth()->user();
+        if($follower->isFollowing($user->id)) {
+            $follower->unfollow($user->id);
+            return back()->withSuccess("You are no longer friends with {$user->name}");
+        }
+        return back()->withError("You are not following {$user->name}");
+    }
+    
+    public function notifications()
+    {
+        return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +64,8 @@ class UserController extends Controller
     public function index(Request $request)
     {
         // $users = User::where('id', '!=', auth()->user()->id)->paginate(5);
-        // return view('users.index', compact('users'))
+        // return view('users.index', compact('users'));
+
         $data = User::orderBy('id','DESC')->paginate(5);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -47,6 +90,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',

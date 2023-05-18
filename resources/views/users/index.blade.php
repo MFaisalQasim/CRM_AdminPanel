@@ -43,12 +43,9 @@
                 <td>
                     <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                    <form route="users.destroy{{ $user->id }}" method="DELETE">
-                    <button type="submit">DELETE</button>
-                    </form>
-                    {{-- {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!} --}}
+                    {!! Form::close() !!}
                 </td>
             </tr>
         @endforeach

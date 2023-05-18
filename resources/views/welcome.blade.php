@@ -828,6 +828,9 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 </head>
 
 <body class="antialiased">
@@ -851,6 +854,21 @@
         @endif
     </div>
     <h1>Well Come</h1>
+    <div class="container">
+        <form id="login" onsubmit="process(event)">
+            <p>Enter your phone number:</p>
+            <input id="phone" type="tel" name="phone" />
+            <input type="submit" class="btn" value="Verify" />
+        </form>
+    </div>
 </body>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        preferredCountries: ["us", "co", "in", "de"],
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
 
 </html>

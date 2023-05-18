@@ -164,14 +164,16 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         \Chatify\ChatifyServiceProvider::class,   
-        NotificationChannels\Discord\DiscordServiceProvider::class,
+        // NotificationChannels\Discord\DiscordServiceProvider::class,
+    Collective\Html\HtmlServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -189,6 +191,8 @@ return [
         // 'Example' => App\Facades\Example::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Chatify' => Chatify\Facades\ChatifyMessenger::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ])->toArray(),
 
 ];
