@@ -17,9 +17,9 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Hardik Savani', 
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('123456')
+            'name' => 'Faisal Qasim', 
+            'email' => 'faisalqasim@gmail.com',
+            'password' => bcrypt('faisalqasim')
         ]);
     
         $role = Role::create(['name' => 'Admin']);
