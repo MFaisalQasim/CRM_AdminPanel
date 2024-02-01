@@ -47,7 +47,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     
     // helper
-
     Route::get('helper', function(){
         $imageName = 'example.png';
         $fullpath = productImagePath($imageName);
