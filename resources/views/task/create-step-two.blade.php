@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <form id="myFormId" action="{{ route('products.create.step.two.post') }}" method="POST">
+            <form id="myFormId" action="{{ route('tasks.create.step.two.post') }}" method="POST">
                 @csrf
                 <div class="card">
                     <div class="card-header">Step 2: Status & Stock</div>
@@ -22,21 +22,21 @@
                             @endif
   
                             <div class="form-group">
-                                <label for="description">Product Status</label><br/>
-                                <label class="radio-inline"><input type="radio" name="status" value="1" {{{ (isset($product->status) && $product->status == '1') ? "checked" : "" }}}> Active</label>
-                                <label class="radio-inline"><input type="radio" name="status" value="0" {{{ (isset($product->status) && $product->status == '0') ? "checked" : "" }}}> DeActive</label>
+                                <label for="description">Task Status</label><br/>
+                                <label class="radio-inline"><input type="radio" name="status" value="1" {{{ (isset($task->status) && $task->status == '1') ? "checked" : "" }}}> Active</label>
+                                <label class="radio-inline"><input type="radio" name="status" value="0" {{{ (isset($task->status) && $task->status == '0') ? "checked" : "" }}}> DeActive</label>
                             </div>
   
                             <div class="form-group">
-                                <label for="description">Product Stock</label>
-                                <input type="text"  value="{{{ $product->stock ?? '' }}}" class="form-control" id="productAmount" name="stock"/>
+                                <label for="description">Task Stock</label>
+                                <input type="text"  value="{{{ $task->stock ?? '' }}}" class="form-control" id="taskAmount" name="stock"/>
                             </div>
   
                     </div>
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-6 text-left">
-                                <a href="{{ route('products.create.step.one') }}" class="btn btn-danger pull-right">Previous</a>
+                                <a href="{{ route('tasks.create.step.one') }}" class="btn btn-danger pull-right">Previous</a>
                             </div>
                             <div class="col-md-6 text-right">
                                 <button id="myButtonID" type="submit" class="btn btn-primary">Next</button>

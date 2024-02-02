@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -67,7 +66,6 @@
     </div>
 </div>
 {!! Form::close() !!}
-
 
 <p class="text-center text-primary"><small>Created by FaisalDev</small></p>
 @endsection

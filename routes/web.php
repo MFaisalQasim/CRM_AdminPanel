@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Livewire\NotificationDemo;
 use App\Http\Livewire\NotificationSweetAlert;
 
@@ -76,13 +77,39 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('items/create-step-one', [ItemController::class,'createStepOne'])->name('items.create.step.one');
     Route::post('items/create-step-one', [ItemController::class,'postCreateStepOne'])->name('items.create.step.one.post');
-    
+
     Route::get('items/create-step-two', [ItemController::class,'createStepTwo'])->name('items.create.step.two');
     Route::post('items/create-step-two', [ItemController::class,'postCreateStepTwo'])->name('items.create.step.two.post');
-    
+
     Route::get('items/create-step-three', [ItemController::class,'createStepThree'])->name('items.create.step.three');
     Route::post('items/create-step-three', [ItemController::class,'postCreateStepThree'])->name('items.create.step.three.post');
+
+    // ProjectController
+    // Multi Step Form
+    Route::get('projects', [ProjectController::class,'index'])->name('projects.index');
+
+    Route::get('projects/create-step-one', [ProjectController::class,'createStepOne'])->name('projects.create.step.one');
+    Route::post('projects/create-step-one', [ProjectController::class,'postCreateStepOne'])->name('projects.create.step.one.post');
+    
+    Route::get('projects/create-step-two', [ProjectController::class,'createStepTwo'])->name('projects.create.step.two');
+    Route::post('projects/create-step-two', [ProjectController::class,'postCreateStepTwo'])->name('projects.create.step.two.post');
+    
+    Route::get('projects/create-step-three', [ProjectController::class,'createStepThree'])->name('projects.create.step.three');
+    Route::post('projects/create-step-three', [ProjectController::class,'postCreateStepThree'])->name('projects.create.step.three.post');
       
+    // TaskController
+    // Multi Step Form
+    Route::get('tasks', [TaskController::class,'index'])->name('tasks.index');
+
+    Route::get('tasks/create-step-one', [TaskController::class,'createStepOne'])->name('tasks.create.step.one');
+    Route::post('tasks/create-step-one', [TaskController::class,'postCreateStepOne'])->name('tasks.create.step.one.post');
+    
+    Route::get('tasks/create-step-two', [TaskController::class,'createStepTwo'])->name('tasks.create.step.two');
+    Route::post('tasks/create-step-two', [TaskController::class,'postCreateStepTwo'])->name('tasks.create.step.two.post');
+    
+    Route::get('tasks/create-step-three', [TaskController::class,'createStepThree'])->name('tasks.create.step.three');
+    Route::post('tasks/create-step-three', [TaskController::class,'postCreateStepThree'])->name('tasks.create.step.three.post');
+
     // Fullcalender
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);

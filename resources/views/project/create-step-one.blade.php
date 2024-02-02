@@ -1,0 +1,52 @@
+@extends('layout.default')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <form id="myFormId" action="{{ route('projects.create.step.one.post') }}" method="POST">
+                @csrf
+
+                <div class="card">
+                    <div class="card-header">Step 1: Basic Info</div>
+
+                    <div class="card-body">
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            <div class="form-group">
+                                <label for="title">Project Name:</label>
+                                <input type="text" value="{{ $project->name ?? '' }}" class="form-control" id="taskTitle"  name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="detail">Project Detail:</label>
+                                <input type="text"  value="{{{ $project->detail ?? '' }}}" class="form-control" id="projectdetail" name="detail"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Project Amount:</label>
+                                <input type="text"  value="{{{ $project->amount ?? '' }}}" class="form-control" id="projectAmount" name="amount"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Project Description:</label>
+                                <textarea type="text"  class="form-control" id="taskDescription" name="description">{{{ $project->description ?? '' }}}</textarea>
+                            </div>
+
+                    </div>
+  
+                    <div class="card-footer text-right">
+                        <button id="myButtonID" type="submit" class="btn btn-primary">Next</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
